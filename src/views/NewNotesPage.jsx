@@ -36,7 +36,7 @@ export default function NewNotePage() {
     setError("");
     setSuccess("");
     setLoading(true);
-
+// validacion
     try {
       const data = await apiRequest("/notes", "POST", formData);
       setSuccess(data.msg || "Nota creada exitosamente!");

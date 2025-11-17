@@ -20,9 +20,9 @@ export default function AppHeader() {
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box
           component="img"
-          src="/public/logo.png" 
+          src="/logo.png" 
           alt="Logo"
-          sx={{ height: 80 }} 
+          sx={{ height: 60 }} 
         />
 
         <TheNav />

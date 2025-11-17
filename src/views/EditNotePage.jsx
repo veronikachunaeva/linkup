@@ -57,7 +57,7 @@ export default function NotesEditPage() {
     setError("");
     setSuccess("");
     setSaving(true);
-
+// validacion
     try {
       const data = await apiRequest(`/notes/${id}`, "PUT", formData);
       setSuccess(data.msg || "Nota actualizada exitosamente!");

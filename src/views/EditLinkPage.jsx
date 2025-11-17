@@ -30,6 +30,7 @@ export default function EditLinkPage() {
   const getLink = async () => {
     try {
       setLoading(true);
+      // validacion
       const data = await apiRequest(`/links/${id}`, "GET");
       setFormData({
         link: data.data.link || "",

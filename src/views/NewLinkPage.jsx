@@ -38,6 +38,7 @@ export default function NewLinkPage() {
     setLoading(true);
 
     try {
+      // validacion
       const data = await apiRequest("/links", "POST", formData);
       setSuccess(data.msg || "Enlace creado exitosamente!");
       setFormData({ link: "", group: "", comment: "", description: "", icon: "" });
