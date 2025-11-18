@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Skeleton from "@mui/material/Skeleton";
 import iconsList from "../components/IconsList";
-
 import AppPageWrapper from "../components/AppPageWrapper";
 import { apiRequest } from "../helpers/apiRequest";
 
@@ -23,6 +23,7 @@ export default function LinksPage() {
   const [links, setLinks] = useState([]);
   const [view, setView] = useState("grid");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const getLinks = async () => {
     try {
@@ -89,7 +90,7 @@ export default function LinksPage() {
 
       {loading ? (
         <Grid container spacing={2}>{renderSkeletons()}</Grid>
-      ) : view === "grid" ? (
+      ) : links?.length > 0 &&  view === "grid" ? (
         <Grid container spacing={2}>
           {links.map((link) => (
             <Grid item xs={12} sm={6} md={4} key={link._id}>
@@ -145,7 +146,7 @@ export default function LinksPage() {
             </Grid>
           ))}
         </Grid>
-      ) : (
+      ) : links?.length > 0 && view !== "grid" ? (
         <List>
           {links.map((link) => (
             <ListItem
@@ -190,6 +191,21 @@ export default function LinksPage() {
             </ListItem>
           ))}
         </List>
+      ) : (
+        <>
+          <Typography variant="h6" component="div">
+              No hay enlaces
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate("/links/new")}
+            sx={{ mt: 4 }}
+          >
+            Crear enlace
+          </Button>
+
+        </>
       )}
     </AppPageWrapper>
   );

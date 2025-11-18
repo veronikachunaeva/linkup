@@ -4,22 +4,22 @@ import { AuthContext } from "../context/AuthContext";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Avatar from "@mui/material/Avatar";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import LoginIcon from '@mui/icons-material/Login';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import AddIcon from '@mui/icons-material/Add';
+import Person2Icon from '@mui/icons-material/Person2';
 
 export default function TheNav () {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const { user, logout } = useContext( AuthContext);
-
   const navigate = useNavigate();
   
   const handleLogout = () => {
@@ -37,22 +37,22 @@ export default function TheNav () {
   return (  
     <nav>
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-        <Button 
-          color="inherit"
-          component={NavLink}
-          to="/"
-        >
-          Inicio
-        </Button>
+      
         {!user && <Button
           color="inherit"
           component={NavLink}
           to="/login"
+          startIcon={<LoginIcon />}
         >
           Login
         </Button>}
         {!user && (
-          <Button color="inherit" component={NavLink} to="/register">
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/register"
+            startIcon={<AppRegistrationIcon />}
+          >
             Register
           </Button>
         )}
@@ -60,9 +60,20 @@ export default function TheNav () {
           <Button
             color="inherit"
             component={NavLink}
-            to="/profile"
+            to="/links/new"
+            startIcon={<AddIcon />}
           >
-            Mi Perfil
+            Enlace
+          </Button>
+        )}
+        {user && (
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/notes/new"
+            startIcon={<AddIcon />}
+          >
+            Nota
           </Button>
         )}
 
@@ -75,10 +86,10 @@ export default function TheNav () {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Typography variant="body1" sx={{ fontWeight: 500, mr: 1 }}>
+            <Typography variant="body1" sx={{ mr: 2 }}>
                 {user.name}
               </Typography>
-            <Avatar sx={{ width: 36, height: 36 }}>M</Avatar>
+            <AccountCircleIcon sx={{ width: 36, height: 36 }} />
           </Button>
         )}
 
@@ -119,23 +130,14 @@ export default function TheNav () {
         >
           <MenuItem
             component={NavLink}
-            to="/links/all"
+            to="/profile"
           >
-            Mis enlaces
-          </MenuItem>
-          <MenuItem
-            component={NavLink}
-            to="/notes/all"
-          >
-            Mis notas
+            <ListItemIcon>
+              <Person2Icon fontSize="small" />
+            </ListItemIcon>
+            Mi Perfil
           </MenuItem>
           <Divider />
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
           <MenuItem onClick={ () => handleLogout() } >
             <ListItemIcon>
               <Logout fontSize="small" />

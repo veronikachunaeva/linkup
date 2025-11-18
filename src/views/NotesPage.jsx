@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -20,10 +20,10 @@ import { apiRequest } from "../helpers/apiRequest";
 
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
-  const [view, setView] = useState("grid"); // grid или list
+  const [view, setView] = useState("grid");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  // Получение заметок текущего пользователя
   const getNotes = async () => {
     try {
       setLoading(true);
@@ -89,7 +89,7 @@ export default function NotesPage() {
 
       {loading ? (
         <Grid container spacing={2}>{renderSkeletons()}</Grid>
-      ) : view === "grid" ? (
+      ) : notes?.length && view === "grid" ? (
         <Grid container spacing={2}>
           {notes.map((note) => (
             <Grid item xs={12} sm={6} md={4} key={note._id}>
@@ -128,7 +128,7 @@ export default function NotesPage() {
             </Grid>
           ))}
         </Grid>
-      ) : (
+      ) : notes?.length && view !== "grid" ? (
         <List>
           {notes.map((note) => (
             <ListItem
@@ -177,6 +177,23 @@ export default function NotesPage() {
             </ListItem>
           ))}
         </List>
+      ) : (
+        (
+          <>
+            <Typography variant="h6" component="div">
+                No hay enlaces
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => navigate("/notes/new")}
+              sx={{ mt: 4 }}
+            >
+              Crear nota
+            </Button>
+  
+          </>
+        )
       )}
     </AppPageWrapper>
   );
