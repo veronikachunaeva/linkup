@@ -10,6 +10,8 @@ import EditLinkPage from './views/EditLinkPage.jsx'
 import NotesPage from './views/NotesPage.jsx'
 import NewNotesPage from './views/NewNotesPage.jsx'
 import EditNotePage from './views/EditNotePage.jsx'
+import CategoriesPage from './views/CategoriesPage.jsx'
+import NewCategoryPage from './views/NewCategoryPage.jsx'
 import NotFoundPage from './views/NotFoundPage.jsx'
 import AppLayout from './components/AppLayout.jsx'
 import {  AuthProvider } from './context/AuthContext.jsx'
@@ -33,6 +35,8 @@ function App() {
                 <Route path="/notes/all" element={ <NotesPage /> }/>
                 <Route path="/notes/new" element={ <NewNotesPage /> }/>
                 <Route path="/notes/edit/:id" element={ <EditNotePage />} />
+                <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/categories/new" element={<NewCategoryPage />} />
                 <Route path="/login" element={ <LoginPage /> }/>
                 <Route path="/profile" element={ <ProfilePage /> }/>
                 <Route path="/register" element={ <RegisterPage /> }/>

@@ -42,6 +42,16 @@ export default function TheSidebar() {
           color="inherit"
           startIcon={<AddLinkIcon />}
           component={NavLink}
+          to="/categories"
+          sx={{ width: '100%', justifyContent:'flex-start', gap: 3 }}
+        >
+          Mis categorías
+        </Button>
+        )}
+        {user && (<Button 
+          color="inherit"
+          startIcon={<AddLinkIcon />}
+          component={NavLink}
            to="/links/all"
            sx={{ width: '100%', justifyContent:'flex-start', gap: 3 }}
         >

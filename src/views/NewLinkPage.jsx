@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -49,6 +49,13 @@ export default function NewLinkPage() {
       setLoading(false);
     }
   };
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+  apiRequest("/categories", "GET").then(res => {
+    setCategories(res.data);
+  });
+}, []);
 
   return (
     <AppPageWrapper title="Nuevo Enlace">
@@ -117,6 +124,24 @@ export default function NewLinkPage() {
                 onChange={handleChange}
                 sx={{ mb: 3 }}
               /> */}
+              <FormControl fullWidth sx={{ mb: 3 }}>
+                <InputLabel>Categoría</InputLabel>
+                <Select
+                  name="categoryId"
+                  value={formData.categoryId}
+                  label="Categoría"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="">Sin categoría</MenuItem>
+
+                  {categories.map(cat => (
+                    <MenuItem key={cat._id} value={cat._id}>
+                      {cat.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
               <FormControl fullWidth sx={{ mb: 3 }}>
                 <InputLabel id="icon-label">Icono</InputLabel>
                 <Select

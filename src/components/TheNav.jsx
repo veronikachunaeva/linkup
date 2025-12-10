@@ -69,7 +69,7 @@ export default function TheNav () {
         {user && (
           <Button
             color="inherit"
-            component={NavLink}
+            component={NavLink} 
             to="/notes/new"
             startIcon={<AddIcon />}
           >
