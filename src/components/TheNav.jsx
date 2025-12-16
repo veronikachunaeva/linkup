@@ -42,7 +42,7 @@ export default function TheNav () {
           color="inherit"
           component={NavLink}
           to="/login"
-          startIcon={<LoginIcon />}
+          startIcon={<LoginIcon color='primary' />}
         >
           Login
         </Button>}
@@ -51,7 +51,7 @@ export default function TheNav () {
             color="inherit"
             component={NavLink}
             to="/register"
-            startIcon={<AppRegistrationIcon />}
+            startIcon={<AppRegistrationIcon color='primary' />}
           >
             Register
           </Button>
@@ -61,7 +61,7 @@ export default function TheNav () {
             color="inherit"
             component={NavLink}
             to="/links/new"
-            startIcon={<AddIcon />}
+            startIcon={<AddIcon color="primary" />}
           >
             Enlace
           </Button>
@@ -71,7 +71,7 @@ export default function TheNav () {
             color="inherit"
             component={NavLink} 
             to="/notes/new"
-            startIcon={<AddIcon />}
+            startIcon={<AddIcon color="primary" />}
           >
             Nota
           </Button>
@@ -86,7 +86,7 @@ export default function TheNav () {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Typography variant="body1" sx={{ mr: 2 }}>
+            <Typography variant="body1" sx={{ mr: 2, color: "text.primary" }}>
                 {user.name}
               </Typography>
             <AccountCircleIcon sx={{ width: 36, height: 36 }} />
@@ -133,14 +133,14 @@ export default function TheNav () {
             to="/profile"
           >
             <ListItemIcon>
-              <Person2Icon fontSize="small" />
+              <Person2Icon color="primary" fontSize="small" />
             </ListItemIcon>
             Mi Perfil
           </MenuItem>
           <Divider />
           <MenuItem onClick={ () => handleLogout() } >
             <ListItemIcon>
-              <Logout fontSize="small" />
+              <Logout color="primary" fontSize="small" />
             </ListItemIcon>
             Logout
           </MenuItem>

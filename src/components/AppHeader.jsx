@@ -10,21 +10,17 @@ export default function AppHeader() {
   return (
     <AppBar
       position="static"
-      color="primary" 
       sx={{ 
-        mb: 2,
-        backgroundColor: "background.paper",
         color: "text.secondary",
-        p:1
-      }}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box
-          component="img"
-          src="/logo.png" 
-          alt="Logo"
-          sx={{ height: 60 }} 
-        />
+        p:1,
+        borderBottom: "1px solid var(--grey-600)",
+        borderRadius: 0,
+        '--Paper-shadow': 'none !important',
+        '--Paper-overlay': 'none !important',
+        '--AppBar-background': 'f5f5f5',
 
+      }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignSelf:" end" }}>
         <TheNav />
       </Toolbar>
     </AppBar>

@@ -51,7 +51,7 @@ export default function LoginPage() {
           maxWidth: 400,
           mt: 8,
           p: 4,
-          backgroundColor: "background.paper",
+          backgroundColor: "background.secondary",
           borderRadius: 2,
           boxShadow: 3
         }}

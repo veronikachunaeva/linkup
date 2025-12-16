@@ -7,20 +7,23 @@ import AppFooter from './AppFooter.jsx'
 export default function AppLayout () {
   return (
     <Box component="section" sx={{
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         backgroundColor: "background.default",
       }}>
-        <AppHeader />
-        <Box sx={{ flex: 1, mb: 2 }}>
+        
+        <Box sx={{ 
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}>
           <Box
             sx={{
               flex: 1,
               display: "flex",
               height: { xs: "auto", md: "100%" },
-              gap: 2,
               flexDirection: { xs: "column", md: "row" },
             }}
           >
@@ -32,15 +35,6 @@ export default function AppLayout () {
                 alignSelf: "flex-start",
                 height: "100%",
                 overflowY: "auto",
-                borderRadius: 1,
-                borderRight: {
-                  md: "1px solid var(--mui-palette-grey-800)",
-                },
-                borderBottom: {
-                  xs: "1px solid var(--mui-palette-grey-800)",
-                  md: "none",
-                },
-                backgroundColor: "background.paper",
               }}
             >
               <AppSidebar />
@@ -51,8 +45,12 @@ export default function AppLayout () {
                 display: "flex",
                 flexDirection: "column",
                 flex: 1,
+                borderLeft: {
+                  md: "1px solid var(--grey-600)",
+                },
               }}
             >
+              <AppHeader />
               <Outlet />
             </Box>
           </Box>

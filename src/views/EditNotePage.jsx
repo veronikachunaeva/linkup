@@ -57,11 +57,12 @@ export default function NotesEditPage() {
     setError("");
     setSuccess("");
     setSaving(true);
-// validacion
+
     try {
       const data = await apiRequest(`/notes/${id}`, "PUT", formData);
       setSuccess(data.msg || "Nota actualizada exitosamente!");
       navigate("/notes/all"); 
+    } catch (err) {
       setError(err.message || "Error al actualizar la nota");
     } finally {
       setSaving(false);
@@ -75,7 +76,7 @@ export default function NotesEditPage() {
           maxWidth: 500,
           mt: 6,
           p: 4,
-          backgroundColor: "background.paper",
+          backgroundColor: "background.secondary",
           borderRadius: 2,
           boxShadow: 3,
         }}

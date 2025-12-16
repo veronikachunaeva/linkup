@@ -11,13 +11,11 @@ export default function AppFooter() {
         mt: "auto",
         py: 2,
         px: 3,
-        backgroundColor: "background.paper",
-        borderTop: "1px solid var(--mui-palette-grey-800)",
-        borderRadius: 1,
+        borderTop: "1px solid var(--grey-600)",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        color: "text.secondary",
+        color: "text.primary",
       }}
     >
       <Typography variant="body2">

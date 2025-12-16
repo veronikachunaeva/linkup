@@ -6,19 +6,29 @@ const AuthProvider = ( { children }) => {
     
     const [ user, setUser ] = useState( null );
     const [ token, setToken] = useState(  localStorage.getItem('token') );
+    const [loading, setLoading] = useState(true);
 
     useEffect( () => {
-        if( token){
+        if (token){
             try {
                 const decoded = jwtDecode( token );
-                setUser( decoded )
+                const isExpired = decoded.exp * 1000 < Date.now();
+                if (isExpired) {
+                    logout();
+                    setUser(null);
+                    window.location.href = '/login';
+                } else {
+                    setUser( decoded )
+                }
             } catch (error) {
                 console.error('Token Invalido', error);
+                logout();
                 setUser(null);
             }
         } else {
             setUser(null);
         }
+        setLoading(false);
     }, [ token ] );
 
 
@@ -34,7 +44,7 @@ const AuthProvider = ( { children }) => {
         localStorage.removeItem('token');
     }
     return (
-        <AuthContext.Provider value={ { user, token, login, logout}} >
+        <AuthContext.Provider value={ { user, token, loading, login, logout}} >
             { children }
         </AuthContext.Provider>
     )

@@ -7,10 +7,8 @@ export default function AppPageWrapper ({ title, children }) {
       sx={{
         maxWidth: "1000px",
         flex: 1,
-        borderRadius: 1,
         py: { xs: 2, md: 3 },
         px: { xs: 2, md: 3 },
-        backgroundColor: "background.paper",
         color: "text.primary",
       }}
     >
@@ -20,6 +18,7 @@ export default function AppPageWrapper ({ title, children }) {
           sx={{
             fontWeight: 600,
             mb: 1,
+            fontSize: '3rem',
           }}
         >
           {title}

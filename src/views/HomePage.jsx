@@ -1,17 +1,20 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import AppPageWrapper from "../components/AppPageWrapper";
+import { AuthContext } from "../context/AuthContext";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 export default function HomePage () {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   return ( 
     <AppPageWrapper
       title="Bienvenido a LinkUp"
     >
       <Box sx={{ color: "text.primary", lineHeight: 1.7 }}>
         <p>
-          Con MarkFlow podés guardar todo lo que quieras recordar: páginas que te interesan,
+          Con LinkUp podés guardar todo lo que quieras recordar: páginas que te interesan,
           ideas rápidas, recordatorios, recursos para el laburo o la facultad, y lo que
           se te ocurra. Todo queda ordenado y lo podés encontrar al toque.
         </p>
@@ -22,28 +25,25 @@ export default function HomePage () {
         </p>
 
         <Box sx={{ mt: 3 }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate("/register")}
-        >
-          Crear cuenta
-        </Button>
-          {/* <Button
-            component={NavLink}
-            to="/register"
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{
-              borderRadius: 2,
-              fontWeight: 600,
-              px: 4,
-              py: 1.2
-            }}
-          >
-            Crear cuenta
-          </Button> */}
+          { user ? (
+            <Button
+              variant="contained"
+              color="primary"
+              component={NavLink}
+              to="/categories/new"
+            >
+              Crear categoría
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              component={NavLink}
+              to="/register"
+            >
+              Crear cuenta
+            </Button>
+          ) }
         </Box>
       </Box>
     </AppPageWrapper>

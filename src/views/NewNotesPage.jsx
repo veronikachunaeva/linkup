@@ -51,7 +51,7 @@ export default function NewNotePage() {
 
   return (
     <AppPageWrapper title="Nueva Nota">
-      <Box sx={{ maxWidth: 500, mt: 6, p: 4, backgroundColor: "background.paper", borderRadius: 2, boxShadow: 3 }}>
+      <Box sx={{ maxWidth: 500, mt: 6, p: 4, backgroundColor: "background.secondary", borderRadius: 2, boxShadow: 3 }}>
         {loading ? (
           <Box>
             <Skeleton height={40} sx={{ mb: 2 }} />
