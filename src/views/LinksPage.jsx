@@ -155,7 +155,7 @@ export default function LinksPage() {
                 <Typography 
                   variant="caption" 
                   sx={{ 
-                    color: category.color,
+                    color: category?.color,
                     fontWeight: 500,
                     fontSize: "0.7rem"
                   }}
@@ -228,10 +228,10 @@ export default function LinksPage() {
           borderColor: category?.color,
           transition: "0.25s",
           cursor: "pointer",
-          boxShadow: `0 4px 12px ${category.color}40`,
+          boxShadow: `0 4px 12px ${category?.color}40`,
           "&:hover": {
             transform: "translateY(-4px)",
-            boxShadow: `0 8px 24px ${category.color}80`
+            boxShadow: `0 8px 24px ${category?.color}80`
           },      
           mb: 2,
         }}
@@ -271,7 +271,7 @@ export default function LinksPage() {
                   <Typography 
                     variant="caption" 
                     sx={{ 
-                      color: category.color,
+                      color: category?.color,
                       fontWeight: 500,
                       fontSize: "0.7rem"
                     }}

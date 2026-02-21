@@ -16,7 +16,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function ProfileEditPage() {
   const { user, login } = useContext(AuthContext);
-  console.log(user, 'user');
 
   const [form, setForm] = useState({
     name: "",
@@ -34,15 +33,20 @@ export default function ProfileEditPage() {
 
   useEffect(() => {
       try{
-      apiRequest(`/users/${user.id}`).then(res => setForm(
-        form => ({
-        ...form,
-        name: res.data.name || "",
-        tel: res.data.tel || "",
-        email: res.data.email || "",
-        avatar: res.data.avatar || "",
-      })
-      ));
+      apiRequest(`/users/${user.id}`).then(res =>  {
+        
+        setForm(
+          form => ({
+            ...form,
+            name: res.data.name || "",
+            email: res.data.email || "",
+            tel: res.data.tel || "",
+            avatar: res.data.avatar || "",
+          })
+        )
+        
+      }
+    );
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +71,7 @@ export default function ProfileEditPage() {
         name: form.name,
         tel: form.tel,
         avatar: form.avatar,
-        email: form.email
+        email: user.email
       };
 
       if (form.password) {
@@ -110,7 +114,7 @@ export default function ProfileEditPage() {
 
       <TextField
         label="Email"
-        value={form.email}
+        value={user.email}
         fullWidth
         disabled
         sx={{ mb: 2 }}

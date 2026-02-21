@@ -45,7 +45,6 @@ export default function NotesPage() {
       setLoading(true);
       const data = await apiRequest("/notes", "GET");
       setNotes(data.data || []);
-      console.log(data.data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -62,7 +61,6 @@ export default function NotesPage() {
   };
 
   const handleDeleteNote = async (id) => {
-    console.log('handleDeleteNote')
     try {
       await apiRequest(`/notes/${id}`, "DELETE");
       setNotes(notes.filter((note) => note._id !== id));

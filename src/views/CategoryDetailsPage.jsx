@@ -47,7 +47,6 @@ export default function CategoryDetailsPage() {
       
         const linksData = await apiRequest(`/links/category/${id}`, "GET");
         setLinks(linksData.data || []);
-        console.log(linksData.data);
 
       } catch (e) {
         console.error("Error al cargar la categoría: ", e);

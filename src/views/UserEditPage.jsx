@@ -29,8 +29,6 @@ export default function UserEditPage() {
         avatar: res.data.avatar || "",
       })
       ));
-
-      console.log(form);
     } catch (error) {
       console.error(error);
     }

@@ -8,7 +8,6 @@ import { Typography, IconButton, Box, CircularProgress, Alert, Skeleton } from "
 
 export default function EditCategoryPage() {
   const { id } = useParams();
-  console.log(id, 'id');
   const navigate = useNavigate();
   
   const [loading, setLoading] = useState(true);
